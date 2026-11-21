@@ -1,0 +1,38 @@
+{
+  "targets": {
+    "history": { "persistent": true },
+    "blended": { "persistent": true }
+  },
+  "passes": [
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "simplemotionblur:post/blend",
+      "inputs": [
+        { "sampler_name": "Current", "target": "minecraft:main" },
+        { "sampler_name": "Prev", "target": "history" }
+      ],
+      "output": "blended",
+      "uniforms": {
+        "BlendConfig": [
+          { "name": "Strength", "type": "float", "value": 0.45 }
+        ]
+      }
+    },
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "simplemotionblur:post/copy",
+      "inputs": [
+        { "sampler_name": "In", "target": "blended" }
+      ],
+      "output": "history"
+    },
+    {
+      "vertex_shader": "minecraft:core/screenquad",
+      "fragment_shader": "simplemotionblur:post/copy",
+      "inputs": [
+        { "sampler_name": "In", "target": "blended" }
+      ],
+      "output": "minecraft:main"
+    }
+  ]
+}
