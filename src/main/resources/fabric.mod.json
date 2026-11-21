@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "simplemotionblur",
+  "version": "${version}",
+  "name": "Simple Motion Blur",
+  "description": "Lightweight frame-blending motion blur. Three tiny fullscreen passes, no FPS drops.",
+  "authors": ["You"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.example.simplemotionblur.SimpleMotionBlurMod"]
+  },
+  "mixins": ["simplemotionblur.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
